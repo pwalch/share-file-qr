@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = ">=2.8,<2.9"
+flake8 = ">=3.5,<3.6"
+yapf = ">=0.21,<0.22"
+mypy = ">=0.580,<0.581"
+
+[packages]
+tornado = ">=5.0,<5.1"
+qrcode = ">=6.0,<6.1"
+click = ">=6.7,<6.8"
+python-magic = ">=0.4,<0.5"
+qrfile = {path = ".", editable = true}
