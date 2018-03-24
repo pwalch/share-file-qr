@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+
+import click
+import os.path
+
+from qrfile.core import share_file
+
+
+@click.command()
+@click.argument("file_to_share")
+@click.option("--port", type=click.INT, default=4000)
+def qrfile(file_to_share: str, port: int, browser: bool):
+    """
+    Enables you to share a file with your phone using QR code scanning.
+    Give this program a file, and it will generate a QR code leading
+    to a download link for your phone.
+    """
+    if not os.path.isfile(file_to_share):
+        print(f"Provided file does not exist: {file_to_share}")
+
+    share_file(os.path.abspath(file_to_share), port)
+
+
+if __name__ == '__main__':
+    qrfile()
