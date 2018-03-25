@@ -2,7 +2,6 @@ import os.path
 from typing import Tuple
 from urllib.parse import quote
 
-import magic
 import tornado.ioloop
 import tornado.web
 
@@ -28,7 +27,12 @@ def share_file(shared_file_abs_path: str, port: int, browser_display: bool) -> N
     shared_file_url: str = f"{local_ip_address}:{port}/{shared_file_route}"
 
     # Guess mime type from file content
-    file_mime_type: str = magic.from_file(shared_file_abs_path, mime=True)
+    # TODO: First had python-magic as a dependency, but this
+    # forced users to install the C library libmagic.
+    # To keep the application easy to install, this python-magic
+    # dependency was removed, and the mime type is always set
+    # as a blob of bytes.
+    file_mime_type: str = "application/octet-stream"
 
     # Create file route with appropriate path and mime type
     mimed_file_handler = (
