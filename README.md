@@ -1,5 +1,7 @@
 # share-file-qr
 
+![PyPI](https://img.shields.io/pypi/v/share-file-qr.svg)
+
 Share files from the terminal of your computer to a smartphone by scanning a QR code.
 
 This repo is a Python re-implementation of the original [Go version](https://github.com/claudiodangelis/qr-filetransfer)
