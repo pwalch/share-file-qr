@@ -1,10 +1,12 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "7af377cd8e014f7494d556d92844855a8cec56341d0895bc89f8172813cd2ce1"
+            "sha256": "06071f8237d644cee9b6b39b78426f621671d0d980909e36674be1b450475ce8"
         },
         "pipfile-spec": 6,
-        "requires": {},
+        "requires": {
+            "python_version": "3.6"
+        },
         "sources": [
             {
                 "url": "https://pypi.python.org/simple",
@@ -20,23 +22,12 @@
             ],
             "version": "==6.7"
         },
-        "python-magic": {
-            "hashes": [
-                "sha256:f2674dcfad52ae6c49d4803fa027809540b130db1dec928cfbb9240316831375",
-                "sha256:f3765c0f582d2dfc72c15f3b5a82aecfae9498bd29ca840d72f37d7bd38bfcd5"
-            ],
-            "version": "==0.4.15"
-        },
         "qrcode": {
             "hashes": [
                 "sha256:037b0db4c93f44586e37f84c3da3f763874fcac85b2974a69a98e399ac78e1bf",
                 "sha256:de4ffc15065e6ff20a551ad32b6b41264f3c75275675406ddfa8e3530d154be3"
             ],
             "version": "==6.0"
-        },
-        "qrfile": {
-            "editable": true,
-            "path": "."
         },
         "six": {
             "hashes": [
@@ -105,6 +96,10 @@
                 "sha256:fc4c86be54fce08e4b85b646a736efa18c6cde7599c1d2919f4f74629e018baf"
             ],
             "version": "==2.8.7"
+        },
+        "qrfile": {
+            "editable": true,
+            "path": "."
         },
         "typed-ast": {
             "hashes": [
