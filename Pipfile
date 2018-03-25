@@ -10,7 +10,7 @@ setuptools = ">=39.0,<39.1"
 twine = ">=1.11,<1.12"
 yapf = ">=0.21,<0.22"
 
-qrfile = {path = ".", editable = true}
+sharefileqr = {path = ".", editable = true}
 
 [packages]
 click = ">=6.7,<6.8"

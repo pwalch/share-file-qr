@@ -25,14 +25,14 @@ def get_long_description():
 setup(
     name="share-file-qr",
     version="0.1.0",
-    packages=["qrfile"],
+    packages=["sharefileqr"],
     python_requires=">=3.6",
     install_requires=[
         "click>=6.7,<7.0",
         "qrcode>=6.0,<7.0",
         "tornado>=5.0,<6.0"
     ],
-    entry_points={"console_scripts": ["share-file-qr=qrfile.cli:cli"]},
+    entry_points={"console_scripts": ["share-file-qr=sharefileqr.cli:cli"]},
     license="GPLv3",
     description="Share files from the terminal of your computer to a smartphone by scanning a QR code.",
     long_description=get_long_description(),
