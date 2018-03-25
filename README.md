@@ -1,6 +1,6 @@
 # share-file-qr
 
-![PyPI](https://img.shields.io/pypi/v/share-file-qr.svg)
+[![PyPI](https://img.shields.io/pypi/v/share-file-qr.svg)](https://pypi.org/project/share-file-qr/)
 
 Share files from the terminal of your computer to a smartphone by scanning a QR code.
 
