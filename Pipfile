@@ -3,18 +3,19 @@ url = "https://pypi.python.org/simple"
 verify_ssl = true
 
 [dev-packages]
-pytest = ">=2.8,<2.9"
 flake8 = ">=3.5,<3.6"
-yapf = ">=0.21,<0.22"
 mypy = ">=0.580,<0.581"
+pytest = ">=2.8,<2.9"
 setuptools = ">=39.0,<39.1"
+twine = ">=1.11,<1.12"
+yapf = ">=0.21,<0.22"
 
 qrfile = {path = ".", editable = true}
 
 [packages]
-tornado = ">=5.0,<5.1"
-qrcode = ">=6.0,<6.1"
 click = ">=6.7,<6.8"
+qrcode = ">=6.0,<6.1"
+tornado = ">=5.0,<5.1"
 
 [requires]
 python_version = "3.6"
