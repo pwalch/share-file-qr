@@ -3,7 +3,7 @@
 import click
 import os.path
 
-from qrfile.core import share_file
+from sharefileqr.core import share_file
 
 
 @click.command()

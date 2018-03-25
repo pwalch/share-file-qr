@@ -5,9 +5,9 @@ from urllib.parse import quote
 import tornado.ioloop
 import tornado.web
 
-from qrfile.handlers import ImageHandler, MimedStaticFileHandler
-from qrfile.network import get_local_ip_address
-from qrfile.qrcodes import generate_utf8_svg, generate_ascii
+from sharefileqr.handlers import ImageHandler, MimedStaticFileHandler
+from sharefileqr.network import get_local_ip_address
+from sharefileqr.qrcodes import generate_utf8_svg, generate_ascii
 
 
 def share_file(shared_file_abs_path: str, port: int, browser_display: bool) -> None:
