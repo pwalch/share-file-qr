@@ -1,44 +1,91 @@
+import os.path
+from typing import Tuple
+
 import magic
 import tornado.ioloop
 import tornado.web
-import os.path
 
-from qrfile.handlers import MainHandler, ImageHandler, MimedStaticFileHandler
+from qrfile.handlers import ImageHandler, MimedStaticFileHandler
 from qrfile.network import get_local_ip_address
-from qrfile.qrcodes import generate_qrcode_utf8
+from qrfile.qrcodes import generate_utf8_svg, generate_ascii
 
 
-def share_file(file_absolute_path: str, port: int):
-    tornado_app = make_app(file_absolute_path, port)
+def share_file(shared_file_abs_path: str, port: int, browser_display: bool) -> None:
+    """Shares a file from the disk to a mobile phone.
+
+    Arguments:
+        shared_file_abs_path {str} -- absolute path to the file to be shared
+        port {int} -- listening port for the HTTP server
+        browser_display {bool} -- whether the user wants to see the SVG in the browser
+    """
+
+    local_ip_address: str = get_local_ip_address()
+
+    # Define file route
+    file_basename: str = os.path.basename(shared_file_abs_path)
+    shared_file_route: str = f"file/{file_basename}"
+    shared_file_url: str = f"{local_ip_address}:{port}/{shared_file_route}"
+
+    # Guess mime type from file content
+    file_mime_type: str = magic.from_file(shared_file_abs_path, mime=True)
+
+    # Create file route with appropriate path and mime type
+    mimed_file_handler = (
+        f"/{shared_file_route}()", MimedStaticFileHandler, {
+            "path": shared_file_abs_path,
+            "mime_type": file_mime_type
+        }
+    )
+
+    # Generate Tornado app, with an SVG route if necessary
+    tornado_app = generate_tornado_app(
+        mimed_file_handler, shared_file_url, browser_display
+    )
+
+    # Give the QR code to the user
+    deliver_qr_code(local_ip_address, port, shared_file_url, browser_display)
     tornado_app.listen(port)
     tornado.ioloop.IOLoop.current().start()
 
 
-def make_app(file_absolute_path: str, port: int):
-    local_ip_address: str = get_local_ip_address()
+def deliver_qr_code(
+    local_ip_address: str, port: int, shared_file_url: str, browser_display: bool
+) -> None:
+    """Gives the QR code to the user, depending on whether he wants it
+    in the terminal or in the browser. If the user wants the QR code directly
+    in the terminal, then it is printed directly to standard output. If the user
+    wants it through a web browser, then a URL to an SVG image is printed to standard
+    output for the user to click.
+    """
 
-    file_basename: str = os.path.basename(file_absolute_path)
-    file_route: str = f"file/{file_basename}"
+    if browser_display:
+        # Print QR code URL to be opened in the browser
+        qrcode_url: str = f"{local_ip_address}:{port}/qrcode.svg"
+        print("Click on this SVG image link to display the QR code to scan:")
+        print(f"http://{qrcode_url}")
+    else:
+        # Print ASCII QR code directly in the terminal
+        qrcode_ascii_string = generate_ascii(shared_file_url)
+        print(qrcode_ascii_string)
+        print("Scan the QR code above to get the file on your phone.")
+        print("If it does not work, try the --browser-display option.")
 
-    # Guess mime type from file content
-    file_mime_type: str = magic.from_file(file_absolute_path, mime=True)
+    print()
+    print("Press CTRL+C to exit once you got the file.")
 
-    # Generate QR code
-    file_url: str = f"{local_ip_address}:{port}/{file_route}"
-    qrcode_svg_utf8: bytes = generate_qrcode_utf8(file_url)
 
-    # Print QR code URL
-    qrcode_url: str = f"{local_ip_address}:{port}/qrcode.svg"
-    print(f"Scan QR code there: http://{qrcode_url}")
+def generate_tornado_app(
+    mimed_file_handler: Tuple, shared_file_url: str, add_svg_handler=False
+) -> tornado.web.Application:
+    handlers: list = [mimed_file_handler]
 
-    # Serve QR code and file
-    return tornado.web.Application([
-        ("/", MainHandler),
-        ("/qrcode.svg", ImageHandler, {
-            "qrcode_svg_utf8": qrcode_svg_utf8
-        }),
-        (f"/{file_route}()", MimedStaticFileHandler, {
-            "path": file_absolute_path,
-            "mime_type": file_mime_type
-        }),
-    ])  # yapf: disable
+    # If required, serve the QR code as an SVG
+    if add_svg_handler:
+        svg_handler = (
+            "/qrcode.svg", ImageHandler, {
+                "qrcode_svg_utf8": generate_utf8_svg(shared_file_url)
+            }
+        )
+        handlers.append(svg_handler)
+
+    return tornado.web.Application(handlers)

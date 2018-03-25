@@ -1,11 +1,6 @@
 import tornado.web
 
 
-class MainHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.write("qrfile home")
-
-
 class ImageHandler(tornado.web.RequestHandler):
     def initialize(self, qrcode_svg_utf8):
         self.qrcode_svg_utf8 = qrcode_svg_utf8
