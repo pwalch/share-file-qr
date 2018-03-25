@@ -24,7 +24,7 @@ def get_long_description():
 
 setup(
     name="share-file-qr",
-    version="0.1.0",
+    version="0.1.2",
     packages=["sharefileqr"],
     python_requires=">=3.6",
     install_requires=[
