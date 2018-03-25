@@ -1,5 +1,6 @@
 import os.path
 from typing import Tuple
+from urllib.parse import quote
 
 import magic
 import tornado.ioloop
@@ -23,7 +24,7 @@ def share_file(shared_file_abs_path: str, port: int, browser_display: bool) -> N
 
     # Define file route
     file_basename: str = os.path.basename(shared_file_abs_path)
-    shared_file_route: str = f"file/{file_basename}"
+    shared_file_route: str = f"file/{quote(file_basename)}"
     shared_file_url: str = f"{local_ip_address}:{port}/{shared_file_route}"
 
     # Guess mime type from file content
