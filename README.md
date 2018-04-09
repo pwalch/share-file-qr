@@ -4,10 +4,14 @@
 
 Share files from the terminal of your computer to a smartphone by scanning a QR code.
 
-This repo is a Python re-implementation of the original [Go version](https://github.com/claudiodangelis/qr-filetransfer)
+This repo is a Python 3.6 re-implementation of the original [Go version](https://github.com/claudiodangelis/qr-filetransfer)
 by [Claudio d'Angelis](https://claudiodangelis.com/).
 
 ## Installation
+
+Before attempting pipsi or Pip installation of the `share-file-qr` package, make sure you have
+a Python `3.6` interpreter set up. Indeed, this package is not compatible with earlier versions,
+such as `2.7` or `3.5`.
 
 Fancy installation (recommended):
 * `pipsi install share-file-qr`
@@ -18,20 +22,20 @@ Pip installation:
 ## Principle
 
 The principle is the same as in the Go version:
-1. you give a file to the tool
-2. the tool serves this file with HTTP server
-3. the tool gives you a QR code leading to the URL pointing to the server
-   and the file on the local network
+1. you give a file to the tool in your computer's terminal
+2. the tool serves this file with an HTTP server
+3. the tool gives you a QR code leading to the URL. This URL points to the server
+   and the file on the local network.
 4. you scan the QR code with your smartphone and get the URL to your file
 5. you open the URL with your smartphone's web browser, and download starts
-6. you stop the tool
+6. once download finishes on your smartphone, you stop the tool in your terminal
 
 ## Usage
 
 First, make sure your computer and your smartphone are connected to the same local
-network. This is in general the case if they are connected to the same Wifi box. If you
-have doubts, check their IP addresses. Please also be aware that this tool does not
-work with IPv6.
+network. This is in general the case if they are connected to the same router in your
+home. If you have doubts, check their IP addresses. Please also be aware that
+this tool does not work with IPv6.
 
 Once connectivity issues are solved, run the tool by providing a file:
 
