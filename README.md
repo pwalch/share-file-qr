@@ -4,20 +4,16 @@
 
 Share files from the terminal of your computer to a smartphone by scanning a QR code.
 
-This repo is a Python 3.6 re-implementation of the original [Go version](https://github.com/claudiodangelis/qr-filetransfer)
+This repo is a Python re-implementation of the original [Go version](https://github.com/claudiodangelis/qr-filetransfer)
 by [Claudio d'Angelis](https://claudiodangelis.com/).
 
 ## Installation
 
-Before attempting pipsi or Pip installation of the `share-file-qr` package, make sure you have
-a Python `3.6` interpreter set up. Indeed, this package is not compatible with earlier versions,
-such as `2.7` or `3.5`.
+This program requires Python 3.9 or later.
 
-Fancy installation (recommended):
-* `pipsi install share-file-qr`
-
-Pip installation:
-* `pip install share-file-qr`
+Installation:
+* `pipx install share-file-qr`
+  * find install instructions for [pipx](https://pypa.github.io/pipx/installation/) on their website
 
 ## Principle
 
@@ -82,14 +78,23 @@ browser) scan it with your smartphone to get a URL to the file and download it i
 your web browser. Depending on your phone's OS you may have to scan the QR
 code differently:
 * iOS, use the standard camera app
-* Android: try [QR Code Scanner](https://play.google.com/store/apps/details?id=me.scan.android.client)
-  by [Scan](https://www.scan.me/)
+* Android: try [Binary Eye](https://play.google.com/store/apps/details?id=de.markusfisch.android.binaryeye)
+  by [Markus Fish](http://www.markusfisch.de)
 
-## License
+## Development notes
+
+### License
 
 GPLv3
 
-## Authors
+### Authors
 
 This Python tool was implemented by [Pierre Walch](http://pwal.ch),
 based on ideas from a Go project by [Claudio d'Angelis](https://github.com/claudiodangelis/qr-filetransfer).
+
+### Instructions for publishing to PyPI
+
+* enter the venv of the project
+* `python setup.py sdist`
+* test: `twine upload -r testpypi dist/*`
+* real: `twine upload dist/*`
