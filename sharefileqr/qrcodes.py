@@ -1,4 +1,5 @@
 from io import BytesIO, StringIO
+
 import qrcode as qr
 from qrcode.image.svg import SvgImage
 
