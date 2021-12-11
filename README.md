@@ -35,40 +35,7 @@ this tool does not work with IPv6.
 
 Once connectivity issues are solved, run the tool by providing a file:
 
-```
-➜ share-file-qr README.md 
-
-    █▀▀▀▀▀█  █ █▄  ▀▀▄▄ █ █▀▀▀▀▀█    
-    █ ███ █ █▄▀▄█ ▀ █ ▀█▀ █ ███ █    
-    █ ▀▀▀ █ █ ██▀███▄ ▀▀▄ █ ▀▀▀ █    
-    ▀▀▀▀▀▀▀ █▄█ ▀▄▀▄▀ ▀ █ ▀▀▀▀▀▀▀    
-    ▀ ▀█▀▀▀▄▄█▀▄  ▀█▄ ▄▄▄ █▀███▄▄    
-    █▄█▄▀▀▀▀▄█▀▀  ▄ ▄ ▀ ▄▄    ▀█▄    
-    ██▀▀██▀█ ▄▀▄▀▄▄▄▀ ▄█▄▀▄▀▄▀▀▀▄    
-    █▀▀███▀█▀▄ ▄██▀█▀ ▄ ▀█  ▄▀ ▀     
-    █▀▄█  ▀ ▀ ▄▄█ ▀█▄▄▄█▄▀▄▀▄█▀▀█    
-    █  ▀▄ ▀▄██▀▄  ▄ ▄  ▄▄█ ▄  ▀▀     
-    ▀ ▀   ▀▀█▄█▄▀▄▄▄  ▄ █▀▀▀█▀█▀▄    
-    █▀▀▀▀▀█ ▄▀▄▀ █▀█▄  ██ ▀ █  ▀▄    
-    █ ███ █ ██▄▄█ ▀▀▄██▄██▀▀▀▄█ ▀    
-    █ ▀▀▀ █ ▀██▄█▀███▀▄▀█▄▀ █ ▀█     
-    ▀▀▀▀▀▀▀ ▀▀ ▀▀▀   ▀   ▀  ▀▀▀      
-Scan the QR code above to get the file on your phone.
-If it does not work, try the --browser-display option.
-
-Press CTRL+C to exit once you get the file.
-```
-
-In case your terminal does not render the QR code properly, try the `-b` option to
-get an SVG image to open in your browser:
-
-```
-➜ share-file-qr -b README.md
-Click on this SVG image link to display the QR code to scan:
-http://192.168.0.2:4000/qrcode.svg
-
-Press CTRL+C to exit once you got the file.
-```
+![screenshot](screenshot.png)
 
 At this point, you should have a QR code displayed directly in your terminal, or in
 your computer's browser as an SVG image.
