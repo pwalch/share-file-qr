@@ -20,7 +20,7 @@ click==8.0.3
     #   black
 colorama==0.4.4
     # via twine
-cryptography==36.0.0
+cryptography==39.0.1
     # via secretstorage
 docutils==0.18.1
     # via readme-renderer
