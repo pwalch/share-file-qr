@@ -1,12 +1,13 @@
 # Editors ==================================
 
 .vscode/*
+.idea/
 
 # Python ==================================
 
-# standalone-venv
+# lonesnake
 /.envrc
-/.standalone-venv/
+/.lonesnake/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
