@@ -51,7 +51,7 @@ code differently:
 ## Development notes
 
 To install for development, provided a venv is activated:
-- `pip install -r requirements-dev.txt`
+- `pip install -r requirements-dev.txt -r requirements.txt`
 - `pip install --editable .`
 - `share-file-qr --help`
 
